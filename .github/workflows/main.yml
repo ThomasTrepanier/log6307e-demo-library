@@ -32,25 +32,22 @@ jobs:
                   cache: 'npm'
                   cache-dependency-path: ${{env.dir}}/package-lock.json
 
-            - name: echo
-              run: echo ${{env.dir}}}
-
             - name: Install dependencies
               run: |
-                  cd ${{env.dir}}}
+                  cd ${{env.dir}}
                   npm ci
 
             - name: Lint
               run: |
-                  cd ${{env.dir}}}
+                  cd ${{env.dir}}
                   npm run lint
 
             - name: Build
               run: |
-                  cd ${{env.dir}}}
+                  cd ${{env.dir}}
                   npm run build
 
             - name: Test
               run: |
-                  cd $DIR
+                  cd ${{env.dir}}
                   npm run test-ci
