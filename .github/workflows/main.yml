@@ -30,24 +30,24 @@ jobs:
               with:
                   node-version: '16'
                   cache: 'npm'
-                  cache-dependency-path: ${{env.DIR}}/package-lock.json
+                  cache-dependency-path: ${{env.dir}}/package-lock.json
 
             - name: echo
-              run: echo ${{env.DIR}}}
+              run: echo ${{env.dir}}}
 
             - name: Install dependencies
               run: |
-                  cd ${{env.DIR}}}
+                  cd ${{env.dir}}}
                   npm ci
 
             - name: Lint
               run: |
-                  cd ${{env.DIR}}}
+                  cd ${{env.dir}}}
                   npm run lint
 
             - name: Build
               run: |
-                  cd ${{env.DIR}}}
+                  cd ${{env.dir}}}
                   npm run build
 
             - name: Test
