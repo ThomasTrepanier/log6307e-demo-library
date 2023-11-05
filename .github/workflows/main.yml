@@ -34,13 +34,21 @@ jobs:
               run: echo $DIR
 
             - name: Install dependencies
-              run: cd $DIR && npm ci
+              run: |
+                  cd $DIR
+                  npm ci
 
             - name: Lint
-              run: cd $DIR && npm run lint
+              run: |
+                  cd $DIR
+                  npm run lint
 
             - name: Build
-              run: cd $DIR && npm run build
+              run: |
+                  cd $DIR
+                  npm run build
 
             - name: Test
-              run: cd $DIR && npm run test-ci
+              run: |
+                  cd $DIR
+                  npm run test-ci
