@@ -2,7 +2,7 @@ name: Demo-Library CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, demo-branch]
     paths:
       [
         "projects/demo-lib/src/**",
