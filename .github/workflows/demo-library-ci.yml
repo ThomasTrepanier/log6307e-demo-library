@@ -5,8 +5,8 @@ on:
     branches: [main, demo-branch]
     paths:
       [
-        "projects/demo-lib/src/**",
-        "projects/demo-lib/package.json",
+        "projects/demo-library/src/**",
+        "projects/demo-library/package.json",
         ".github/workflows/main.yml",
       ]
     tags: v*
