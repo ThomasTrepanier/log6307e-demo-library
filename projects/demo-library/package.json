@@ -1,6 +1,6 @@
 {
   "name": "@thomastrepanier/demo-library",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "scripts": {
     "ng": "ng",
     "build-dev": "ng build demo-library --configuration=development",
