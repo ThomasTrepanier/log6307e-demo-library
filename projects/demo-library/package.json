@@ -9,7 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test demo-library",
     "test-ci": "ng test demo-library --watch=false --browsers=ChromeHeadless --code-coverage",
-    "publish": "ng build demo-library && cd ../../dist/demo-library && npm publish"
+    "publish": "cd ../../dist/demo-library && npm publish"
   },
   "peerDependencies": {
     "@angular/common": "^16.0.0",
