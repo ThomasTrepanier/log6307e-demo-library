@@ -33,7 +33,10 @@ jobs:
           cache: "npm"
           cache-dependency-path: ${{env.dir}}/package-lock.json
 
-      - name: Install dependencies
+      - name: Install project dependencies
+        run: npm install
+
+      - name: Install library dependencies
         run: |
           cd ${{env.dir}}
           npm install
