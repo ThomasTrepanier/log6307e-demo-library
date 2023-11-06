@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "build": "ng build demo-library",
+    "build-dev": "ng build demo-library --configuration=development",
+    "build-prod": "ng build demo-library --configuration=production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test demo-library",
+    "test-ci": "ng test demo-library --watch=false --browsers=ChromeHeadless --code-coverage",
     "lint": "tslint --project .",
     "publish": "ng build demo-library && cd ../../dist/demo-library && npm publish"
   },
