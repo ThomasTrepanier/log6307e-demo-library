@@ -1,0 +1,77 @@
+name: Publish Library
+
+on:
+  push:
+    tags: v*
+
+env:
+  dir: projects/demo-library
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+          cache: "npm"
+          cache-dependency-path: ${{env.dir}}/package-lock.json
+
+      - name: Install project dependencies
+        run: npm install
+
+      - name: Install library dependencies
+        run: |
+          cd ${{env.dir}}
+          npm install
+
+      - name: Lint
+        run: |
+          cd ${{env.dir}}
+          npm run lint
+
+      - name: Build
+        run: |
+          cd ${{env.dir}}
+          npm run build-dev
+
+      - name: Test
+        run: |
+          cd ${{env.dir}}
+          npm run test-ci
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+          registry-url: https://npm.pkg.github.com/
+          cache: "npm"
+          cache-dependency-path: ${{env.dir}}/package-lock.json
+
+      - name: Install project dependencies
+        run: npm install
+
+      - name: Install library dependencies
+        run: |
+          cd ${{env.dir}}
+          npm install
+
+      - name: Build
+        run: |
+          cd ${{env.dir}}
+          npm run build-prod
+
+      - name: Publish package
+        run: |
+          cd ${{env.dir}}
+          npm run publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
